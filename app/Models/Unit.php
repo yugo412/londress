@@ -13,14 +13,15 @@ class Unit extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'alias',
+        'name',
+        'multiplier',
+    ];
+
     public function branch(): ?BelongsTo
     {
         return $this->belongsTo(Branch::class);
-    }
-
-    public function unit(): BelongsTo
-    {
-        return $this->belongsTo(Unit::class);
     }
 
     public function packages(): HasMany

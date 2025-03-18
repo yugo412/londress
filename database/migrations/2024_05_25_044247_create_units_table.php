@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Branch::class)->nullable()->constrained();
             $table->foreignIdFor(Unit::class)->nullable()->constrained();
             $table->string('alias')->unique();
             $table->string('name');

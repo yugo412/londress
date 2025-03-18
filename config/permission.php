@@ -184,5 +184,8 @@ return [
 
         \App\Filament\Resources\CustomerTypeResource\Enums\CustomerTypePermission::class,
         \App\Filament\Resources\CustomerResource\Enums\CustomerPermission::class,
+
+        \App\Filament\Resources\UnitResource\Enums\UnitPermission::class,
+        \App\Filament\Resources\PackageResource\Enums\PackagePermission::class,
     ],
 ];

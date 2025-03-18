@@ -73,10 +73,6 @@ class CustomerTypeResource extends Resource
                     ->columnSpanFull()
                     ->rows(5)
                     ->nullable(),
-
-                Toggle::make('is_active')
-                    ->label(__('customer.type_active'))
-                    ->default(true),
             ]);
     }
 
