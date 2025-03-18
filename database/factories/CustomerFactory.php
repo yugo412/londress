@@ -17,11 +17,11 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
+            'district_id' => null,
             'name' => fake()->name,
             'phone' => fake()->phoneNumber,
             'email' => fake()->email,
             'address' => fake()->address,
-            'district_id' => null,
         ];
     }
 }
