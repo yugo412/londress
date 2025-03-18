@@ -13,12 +13,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table): void {
             $table->id();
-            $table->foreignIdFor(Branch::class)->nullable()->constrained();
-            $table->foreignIdFor(Unit::class)->constrained();
+            $table->foreignIdFor(Branch::class)
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+            $table->foreignIdFor(Unit::class)
+                ->constrained()
+                ->restrictOnDelete();
             $table->string('name', 100);
+            $table->string('description')->nullable();
             $table->decimal('price');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });
