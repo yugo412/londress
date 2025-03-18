@@ -181,5 +181,8 @@ return [
         \App\Filament\Clusters\Settings\Enums\NumberPermission::class,
         \App\Filament\Clusters\Settings\Enums\ThemePermission::class,
         \App\Filament\Clusters\Settings\Enums\UserPermission::class,
+
+        \App\Filament\Resources\CustomerTypeResource\Enums\CustomerTypePermission::class,
+        \App\Filament\Resources\CustomerResource\Enums\CustomerPermission::class,
     ],
 ];
