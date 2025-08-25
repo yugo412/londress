@@ -40,4 +40,9 @@ class Branch extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function packages(): BelongsToMany
+    {
+        return $this->belongsToMany(Package::class);
+    }
 }
