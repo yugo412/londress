@@ -46,10 +46,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->databaseNotifications()
             ->navigationGroups([
-                NavigationGroup::make(__('navigation.blog'))
-                    ->collapsed()
-                    ->icon('heroicon-o-document-text'),
-
                 NavigationGroup::make(__('navigation.location'))
                     ->icon('heroicon-o-map')
                     ->collapsed(),
