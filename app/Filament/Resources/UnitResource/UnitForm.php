@@ -16,6 +16,7 @@ class UnitForm
 
             TextInput::make('abbr')
                 ->label(__('unit.abbr'))
+                ->unique(ignoreRecord: true)
                 ->required(),
 
             Textarea::make('description')
