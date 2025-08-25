@@ -8,6 +8,7 @@ use App\Filament\Resources\PackageResource\Pages;
 use App\Models\Package;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -60,6 +61,7 @@ class PackageResource extends Resource
                     ->label(__('package.name'))
                     ->sortable()
                     ->searchable()
+                    ->weight(FontWeight::Bold)
                     ->description(fn (Package $record): ?string => $record->description),
 
                 TextColumn::make('price')

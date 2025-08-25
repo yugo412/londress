@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property string|null $description
  * @property HasMany $packages
+ * @property string $abbr
+ * @property string $name
  */
 class Unit extends Model
 {

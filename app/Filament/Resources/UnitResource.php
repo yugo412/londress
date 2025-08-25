@@ -9,6 +9,7 @@ use App\Filament\Resources\UnitResource\UnitForm;
 use App\Models\Unit;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -54,6 +55,8 @@ class UnitResource extends Resource
                     ->label(__('unit.name'))
                     ->searchable()
                     ->sortable()
+                    ->formatStateUsing(fn (Unit $record): string => sprintf('%s (%s)', $record->name, $record->abbr))
+                    ->weight(FontWeight::Bold)
                     ->description(fn (Unit $record): ?string => $record->description),
 
                 ToggleColumn::make('is_active')
