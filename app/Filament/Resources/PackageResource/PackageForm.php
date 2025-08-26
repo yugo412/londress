@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PackageResource;
 
 use App\Filament\Resources\BranchResource\Forms\BranchForm;
+use App\Filament\Resources\UnitResource\Enums\UnitPermission;
 use App\Filament\Resources\UnitResource\UnitForm;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -27,25 +28,27 @@ class PackageForm
                 ->required(),
 
             TextInput::make('slug')
-                ->label(__('package.slug'))
+                ->label(__('ui.slug'))
                 ->unique(ignoreRecord: true)
                 ->required(),
 
-            TextInput::make('price')
-                ->label(__('package.price_per_unit'))
-                ->numeric(),
-
             Select::make('unit_id')
-                ->label(__('unit.name'))
+                ->label(__('unit.label'))
                 ->relationship(
                     name: 'unit',
                     titleAttribute: 'name',
                     modifyQueryUsing: fn (Builder $query): Builder => $query->active(),
                 )
-                ->createOptionForm(UnitForm::schema())
+                ->createOptionForm(user_can(UnitPermission::Create) ? UnitForm::schema() : null)
                 ->searchable()
                 ->preload()
                 ->required(),
+
+            TextInput::make('price')
+                ->label(__('package.price_per_unit'))
+                ->prefix(fn (): ?string => ! config('app.number_symbol_suffix') ? config('app.currency_symbol') : null)
+                ->suffix(fn (): ?string => config('app.number_symbol_suffix') ? config('app.currency_symbol') : null)
+                ->numeric(),
 
             Textarea::make('description')
                 ->columnSpanFull()

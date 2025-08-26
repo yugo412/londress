@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PackageResource\Enums\PackagePermission;
 use App\Filament\Resources\UnitResource\Enums\UnitPermission;
 use App\Filament\Resources\UnitResource\Pages;
 use App\Filament\Resources\UnitResource\UnitForm;
@@ -34,7 +33,7 @@ class UnitResource extends Resource
 
     public static function canAccess(): bool
     {
-        return user_can(PackagePermission::Browse);
+        return user_can(UnitPermission::Browse);
     }
 
     public static function shouldRegisterNavigation(): bool
@@ -60,7 +59,8 @@ class UnitResource extends Resource
                     ->description(fn (Unit $record): ?string => $record->description),
 
                 ToggleColumn::make('is_active')
-                    ->label(__('unit.is_active')),
+                    ->label(__('unit.is_active'))
+                    ->disabled(user_cannot(UnitPermission::Edit)),
 
                 TextColumn::make('updated_at')
                     ->label(__('ui.updated_at'))
