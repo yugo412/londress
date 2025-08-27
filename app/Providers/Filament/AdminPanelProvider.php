@@ -46,6 +46,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->databaseNotifications()
             ->navigationGroups([
+                NavigationGroup::make(__('navigation.transaction'))
+                    ->icon('heroicon-o-shopping-cart'),
+
                 NavigationGroup::make(__('navigation.location'))
                     ->icon('heroicon-o-map')
                     ->collapsed(),

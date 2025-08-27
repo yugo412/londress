@@ -21,8 +21,6 @@ class PackageResource extends Resource
 {
     protected static ?string $model = Package::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
-
     protected static ?string $tenantOwnershipRelationshipName = 'branches';
 
     public static function canAccess(): bool
@@ -33,6 +31,11 @@ class PackageResource extends Resource
     public static function shouldRegisterNavigation(): bool
     {
         return self::canAccess();
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('navigation.transaction');
     }
 
     public static function getLabel(): ?string
