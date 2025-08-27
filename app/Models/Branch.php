@@ -51,4 +51,9 @@ class Branch extends Model
     {
         return $this->belongsToMany(Package::class);
     }
+
+    public function customerTiers(): BelongsToMany
+    {
+        return $this->belongsToMany(CustomerTier::class);
+    }
 }

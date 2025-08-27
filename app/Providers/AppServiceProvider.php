@@ -6,6 +6,7 @@ use App\Services\Database\Database;
 use App\Services\Database\DatabaseFactory;
 use App\Services\OAuth\OAuth;
 use App\Services\OAuth\OAuthFactory;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Number;
@@ -36,11 +37,19 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
+        TextColumn::macro('makeDate', function (string $name, ?string $label = null): TextColumn {
+            return TextColumn::make($name)
+                ->label($label)
+                ->sortable()
+                ->since(get_timezone())
+                ->dateTimeTooltip(get_datetime_format(), get_timezone());
+        });
+
         Number::macro('money', function (
             int|float $amount,
-            ?string $format = null,
-            ?string $symbol = null,
-            ?bool $isSymbolSuffix = null,
+            ?string   $format = null,
+            ?string   $symbol = null,
+            ?bool     $isSymbolSuffix = null,
         ): string {
             $format = $format ?? config('app.number_format', '');
             $isSymbolSuffix = $isSymbolSuffix ?? config('app.number_symbol_suffix', false);
