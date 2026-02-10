@@ -87,6 +87,7 @@ class AdminPanelProvider extends PanelProvider
             ->profile(EditProfile::class)
             ->emailVerification(EmailVerificationPrompt::class)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->discoverResources(in: app_path('Drivers/Filament'), for: 'App\\Drivers\\Filament')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
             ->pages([
