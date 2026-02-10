@@ -17,6 +17,7 @@
         "spatie/laravel-translation-loader": "^2.8"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.6",
         "fakerphp/faker": "^1.9.1",
         "filament/upgrade": "^4.0",
         "fruitcake/laravel-telescope-toolbar": "^1.3",

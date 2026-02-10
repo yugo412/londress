@@ -8,9 +8,29 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\TranslationLoader\LanguageLine;
 
 /**
- * @method static orderBy(string $sort, ?string $order = null)
- *
+ * @property int $id
+ * @property string $group
+ * @property string $key
+ * @property array<array-key, mixed> $text
  * @property bool $is_system
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Carbon\Carbon $local_created_at
+ * @property-read \Carbon\Carbon|null $local_deleted_at
+ * @property-read \Carbon\Carbon $local_updated_at
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereGroup($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereIsSystem($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereUpdatedAt($value)
+ *
+ * @mixin \Eloquent
  */
 class Translation extends LanguageLine
 {
